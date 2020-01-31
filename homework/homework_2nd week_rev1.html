@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+	<title>Homework-1 서귀포 한라봉 판매 페이지</title>
+
+	<style >
+		.mytitle {
+			color: black;
+			text-align: center;
+			background-size: cover;
+			background-position: center;
+			width: 1200px;
+			height: 450px;
+			border-radius: 10px;}
+
+
+			.inline {
+				display: inline
+			}
+			.margin {
+				margin: 0 60px 0 60px;
+			}
+
+
+
+		</style>
+
+
+
+
+		<script type="text/javascript">
+
+			function activate(){
+// 버튼을 눌렀을 때, 입력된 값이 모두 정상이면 -> 리스트업 한다.//
+
+// 1. 입력값들을 정의한다//
+let input_name =  $('#input_name').val();
+let input_quantity =$('#inputGroupSelect03').val();
+let input_address =$('#input_address').val();
+let input_number =$('#input_number').val();
+
+// 2. 버튼을 눌렀을 때의 반응을 적는다. // 
+
+// 2-1. 입력값이 없으면 alert을 띄운다.//
+
+if(input_name ==''){
+	alert("이름을 입력하세요!")
+	$('#input_name').focus()
+	return
+}
+else if (input_quantity ==''){
+	alert("수량을 입력하세요!")
+	$('#inputGroupSelect03').focus()
+	return
+}
+else if (input_address ==''){
+	alert("주소를 입력하세요!")
+	$('#input_address').focus()
+	return
+}
+else if (input_number ==''){
+	alert("전화번호를 입력하세요!")
+	$('#input_number').focus()
+	return
+}
+
+
+let temp_html_name = '<a>'+input_name+'</a>'
+let temp_html_quantity = '<a>'+input_quantity+'</a>'
+let temp_html_address = '<a>'+input_address+'</a>'
+let temp_html_number = '<a>'+input_number+'</a>'
+
+$('#names_hw').append(temp_html_name);
+$('#quantity_hw').append(temp_html_quantity);
+$('#address_hw').append(temp_html_address);
+$('#number_hw').append(temp_html_number);
+
+}
+
+
+
+</script>
+
+
+
+</head>
+<body>
+	<!-- <tab menu> -->
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="#">상세 정보</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 판매 상품</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="#">Something else here</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Separated link</a>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">MY page</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#">비고</a>
+			</li>
+		</ul>
+
+		<hr>
+		<div class ="mytitle">
+			<!--  no.1 picture page -->
+			<img class="product-img-top" src="https://mblogthumb-phinf.pstatic.net/MjAxODAyMThfMjUy/MDAxNTE4OTIzMjQ1NDA0.7eJAYrnmfqLdjC7SBnIQL8gzmkkST9JtBMthVu_bZjMg.uC06iPsZdnfdz0rN1fKIkDDvoR4tReeTAgOE1ZIG1Pog.JPEG.farmerjeju/image_2726327861518919790632.jpg?type=w800">
+
+		</div>
+		<hr>
+
+
+
+		<div class ="container ">
+			<!--  no.2 product explain -->
+			<h2>제주 한라봉 <small class="text-muted">PRICE: 50,000원/kg </small></h2> 
+			<p>L백화점, S백화점에만 납품되는 최고급 당도의 한라봉 밭 옆에서 수확</p>
+		</div>
+
+
+		<div class ="container">
+			<!--  no.3 ordeing page -->
+			<h2>주문하기</h2>
+			<P>주문자 성함: <input id="input_name" type="text"></P>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button id="input_quantity" class="btn btn-outline-secondary" type="button">수량</button>
+				</div>
+				<select class="custom-select" id="inputGroupSelect03">
+					<option selected> </option>
+					<option value="3">3kg</option>
+					<option value="5">5kg</option>
+					<option value="10">10kg</option>
+				</select>
+			</div>
+			<P>주소: <input id="input_address"  type="text"></P>
+			<P>전화번호: <input id="input_number" type="text"></P>			
+		</div>
+
+
+	</div>
+
+	<div class ="container">
+		<!--  no.4 order button -->
+		<button  onclick ="activate()" type="button" class="btn btn-primary">주문하기</button>
+		<button type="button" class="btn btn-secondary">장바구니</button>
+	</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">이름</th>
+			<th scope="col">수량</th>
+			<th scope="col">주소</th>
+			<th scope="col">전화번호</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th id ="names_hw"></th>
+			<td id ="quantity_hw" ></td>
+			<td id = "address_hw"></td>
+			<td id = "number_hw"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+</body>
+</html>
