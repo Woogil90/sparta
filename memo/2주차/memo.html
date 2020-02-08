@@ -424,7 +424,43 @@
     }
   }
 
-</script>
+  function posting() {
+      // 읽기
+      let url = $('#posting-url').val();
+      let comment = $('#posting-comment').val();
+
+      // 우리가 크롬 콘솔창에서 썼던 그 코드!
+      $.ajax({
+        type: "POST", // POST 방식으로 요청하겠다.
+        url: "/post", // /post라는 url에 요청하겠다.
+        data: { url_give: url, comment_give: comment}, // 데이터를 주는 방법
+        success: function(response){ // 성공하면
+          if (response['result'] == 'success') {
+            alert('포스팅 성공!');
+            window.location.reload();
+          } else {
+            alert('서버 오류!')
+          }
+        }
+      })
+    }
+
+    function listing() {
+      $.ajax({
+        type: "GET",
+        url: "/post",
+        data: {},
+        success: function(response){
+         let articles = response['articles'];
+         for (let i = 0; i < articles.length; i++) {
+           make_card(articles[i]['comment'],articles[i]['desc'],articles[i]['image'],articles[i]['title'],articles[i]['url'])
+         }
+       }
+     })
+    }
+
+
+  </script>
 
 </head>
 <body>
@@ -438,17 +474,17 @@
         <button onclick="openclose()" id="btn-posting-box" type="button" class="btn btn-primary">포스팅 박스 열기</button>
       </p>
     </div>
-    <div id="posting-box" class="form-post" id="post-box">
+    <div class="form-post" id="posting-box">
       <div>
         <div class="form-group">
-          <label id="form-post" for="exampleFormControlInput1">아티클 URL</label>
-          <input id='posting-url' class="form-control" placeholder="">
+          <label for="exampleFormControlInput1">아티클 URL</label>
+          <input id="posting-url" class="form-control" placeholder="">
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">간단 코멘트</label>
-          <textarea class="form-control" rows="2"></textarea>
+          <textarea id="posting-comment" class="form-control" rows="2"></textarea>
         </div>
-        <button onclick="hey()" type="button" class="btn btn-primary">기사저장</button>
+        <button onclick="posting()" class="btn btn-primary">기사저장</button>
       </div>
     </div>
     <div id="cards-box" class="card-columns">
